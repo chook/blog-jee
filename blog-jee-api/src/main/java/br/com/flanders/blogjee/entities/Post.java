@@ -26,6 +26,12 @@ public class Post implements Serializable {
 
 	public Post(String title, String body) {
 		super();
+
+		if (title == null || title.equals(""))
+		{
+			throw new NullPointerException("Title in Post constructor empty");
+		}
+
 		this.title = title;
 		this.body = body;
 	}
@@ -45,6 +51,19 @@ public class Post implements Serializable {
 	}
 
 	public void setTitle(String title) {
+		// THIS CODE THROWS BUT FOR SOME REASON TAKIPI DOESNT CATCH
+		if (title != null && title.equals("Explode"))
+		{
+			throw new RuntimeException("Exploding on purpose");
+		}
+
+		/* THIS CODE KILLS THE WEBAPP AND FIRES NICE NESTED EXCEPTION THAT SHOULD WORK
+		if (title == null || title.equals(""))
+		{
+			throw new RuntimeException("Explode on start");
+		}
+		*/
+
 		this.title = title;
 	}
 
